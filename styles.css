@@ -16,11 +16,9 @@
     --emerald800: #065f46;
     --emerald900: #064e3b;
     --emerald950: #022c22;
+    --invalid: red;
 }
 
-.book-template {
-    display: none;
-}
 
 body {
     min-height: 100vh;
@@ -48,7 +46,7 @@ body {
 }
 
 .add-book input:invalid {
-    border: 1px solid red;
+    border: 1px solid var(--invalid);
 }
 
 .sidebar {
@@ -86,6 +84,6 @@ body {
 }
 
 .main > .unread {
-    border: 1px solid red;
-    border-top: 5px solid red;
+    border: 1px solid var(--invalid);
+    border-top: 5px solid var(--invalid);
 }
