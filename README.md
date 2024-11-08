@@ -33,7 +33,6 @@ Visit [https://jruxtapose.github.io/library/](https://jruxtapose.github.io/libra
 ## Future Improvements
 
 * **Local storage:**  Persist the book data using local storage so it is not lost on page refresh.
-* **Search/filter:** Add functionality to search or filter books by title, author, or read status.
 * **Improved UI:** Enhance the user interface with more interactive elements and better visual design.
 * **Move Add Book to Dialog:** Change the move books form into a dialog that appears when needed.
 
