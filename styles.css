@@ -1,0 +1,91 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --emerald50: #ecfdf5;
+    --emerald100: #d1fae5;
+    --emerald200: #a7f3d0;
+    --emerald300: #6ee7b7;
+    --emerald400: #34d399;
+    --emerald500: #10b981;
+    --emerald600: #059669;
+    --emerald700: #047857;
+    --emerald800: #065f46;
+    --emerald900: #064e3b;
+    --emerald950: #022c22;
+}
+
+.book-template {
+    display: none;
+}
+
+body {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 15% 1fr;
+    grid-template-rows: 25fr 75fr;
+    grid-template-areas: 
+    "sidebar header"
+    "sidebar main";
+}
+
+.header {
+    background-color: var(--emerald50);
+    color: var(--emerald950);
+    grid-area: header;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+.add-book input {
+    border: 1px solid var(--emerald950);
+}
+
+.add-book input:invalid {
+    border: 1px solid red;
+}
+
+.sidebar {
+    background-color: var(--emerald700);
+    grid-area: sidebar;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.sidebar form {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.main {
+    background-color: var(--emerald100);
+    grid-area: main;
+    padding: 15px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 150px);
+    grid-template-rows: 250px;
+    grid-auto-rows: 250px;
+    gap: 25px;
+}
+
+.main > div{
+    background-color: var(--emerald50);
+    border: 1px solid var(--emerald600);
+    border-top: 5px solid var(--emerald600);
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.main > .unread {
+    border: 1px solid red;
+    border-top: 5px solid red;
+}
