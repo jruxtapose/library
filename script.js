@@ -5,19 +5,24 @@ const sortLibraryAuthorButton = document.querySelector('.sort-library-author')
 const sortLibraryPagesButton = document.querySelector('.sort-library-pages')
 const searchBooksField = document.querySelector('#search-books')
 
-let librarySearchResults = [];
 
-sortLibraryTitleButton.addEventListener('click', () => {
-    sortLibraryTitle();
-})
+function sortLibrary(criteria) {
+    searchBooksField.value = '';
+    myLibrary.sort((a, b) => {
+        const textA = a[criteria].toUpperCase();
+        const textB = b[criteria].toUpperCase();
+        return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
+    });
+    renderBooks(myLibrary);
+}
 
-sortLibraryAuthorButton.addEventListener('click', () => {
-    sortLibraryAuthor();
-})
-
+sortLibraryTitleButton.addEventListener('click', () => sortLibrary('title'));
+sortLibraryAuthorButton.addEventListener('click', () => sortLibrary('author'));
 sortLibraryPagesButton.addEventListener('click', () => {
-    sortLibraryPages();
-})
+    myLibrary.sort((a,b) => a.pages - b.pages);
+    renderBooks(myLibrary);
+});
+
 
 function filterLibrary(library, searchTerm){
     return library.filter((book) => book.title.toLowerCase().includes(searchTerm.toLowerCase()) || book.author.toLowerCase().includes(searchTerm.toLowerCase()));
@@ -26,7 +31,7 @@ function filterLibrary(library, searchTerm){
 searchBooksField.addEventListener('input', () => {
     if(searchBooksField.value !== ''){
         console.log(searchBooksField.value)
-        librarySearchResults = filterLibrary(myLibrary, searchBooksField.value);
+        let librarySearchResults = filterLibrary(myLibrary, searchBooksField.value);
         renderBooks(librarySearchResults);
     }else renderBooks(myLibrary);
 })
@@ -46,44 +51,6 @@ function Book(title, author, pages, read) {
 
 function addBookToLibrary(book){
     myLibrary.push(book);
-}
-
-function sortLibraryTitle(){
-    searchBooksField.value = '';
-    sortedLibrary = myLibrary.sort(function(a,b) {
-        let textA = a.title.toUpperCase();
-        let textB = b.title.toUpperCase();
-        return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
-    })
-
-    myLibrary = sortedLibrary;
-
-    renderBooks(myLibrary);
-
-}
-
-function sortLibraryAuthor(){
-    searchBooksField.value = '';
-    sortedLibrary = myLibrary.sort(function(a,b) {
-        let textA = a.author.toUpperCase();
-        let textB = b.author.toUpperCase();
-        return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
-    })
-
-    myLibrary = sortedLibrary;
-
-    renderBooks(myLibrary);
-
-}
-
-function sortLibraryPages(){
-    searchBooksField.value = '';
-    sortedLibrary = myLibrary.sort((a,b) => a.pages - b.pages);
-
-    myLibrary = sortedLibrary;
-    mainScreen.textContent = '';
-    renderBooks(myLibrary);
-
 }
 
 const lordOfTheRings1 = new Book('Lord of the Rings: The Fellowship of the Ring', 'J.R.R. Tolkien', 432, true);
@@ -184,15 +151,15 @@ function Tile(book){
 
 function deleteBook(array, itemToRemove){
     let index = array.indexOf(itemToRemove)
-    array.splice(index, 1);
+    if (index > -1){
+        array.splice(index, 1);
+    }
 }
 
 function toggleReadUnread(array, itemToToggle){
     let index = array.indexOf(itemToToggle)
-    if(myLibrary[index].read === true){
-        myLibrary[index].read = false
-    } else {
-        myLibrary[index].read = true;
+    if (index > -1){
+        array[index].read = !array[index].read;
     }
 }
 
