@@ -57,13 +57,13 @@ const lordOfTheRings1 = new Book('Lord of the Rings: The Fellowship of the Ring'
 const theHobbit = new Book('The Hobbit', 'J.R.R. Tolkien', 366, false);
 const lordOfTheRings2 = new Book('Lord of the Rings: The Two Towers', 'J.R.R. Tolkien', 322, true);
 const lordOfTheRings3 = new Book('Lord of the Rings: The Return of the King', 'J.R.R. Tolkien', 432, true);
-const aaaaa = new Book('AAA', 'ZZZ', 12, true);
+const redRising = new Book('Red Rising', 'Pierce Brown', 382, true);
 
 addBookToLibrary(theHobbit)
 addBookToLibrary(lordOfTheRings1)
 addBookToLibrary(lordOfTheRings2)
 addBookToLibrary(lordOfTheRings3)
-addBookToLibrary(aaaaa)
+addBookToLibrary(redRising)
 
 
 form.addEventListener('submit', (event) => {
