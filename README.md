@@ -8,6 +8,8 @@ This project is a simple library application built with JavaScript as part of Th
 * **Display books:**  Books are displayed in a list format with their details.
 * **Toggle read status:** Users can mark books as read or unread.
 * **Remove books:** Users can remove books from the list.
+* **Sort books:** Users can sort books by author, title, or pages.
+* **Search books:** Users can search books by title or author.
 
 ## Technologies Used
 
