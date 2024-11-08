@@ -72,22 +72,40 @@ function Tile(book){
     
     const deleteButton = document.createElement('button');
     deleteButton.textContent = 'Remove';
+
+    const toggleRead = document.createElement('button');
+    toggleRead.textContent = 'Toggle Read/Unread';
     
     tile.appendChild(title);
     tile.appendChild(author);
     tile.appendChild(pages);
     tile.appendChild(deleteButton);
+    tile.appendChild(toggleRead);
     mainScreen.appendChild(tile);
 
     deleteButton.addEventListener('click', () => {
         deleteBook(myLibrary, book);
         tile.remove();
     })
+
+    toggleRead.addEventListener('click', () => {
+        toggleReadUnread(myLibrary, book);
+        tile.classList.toggle('unread');
+    })
 }
 
 function deleteBook(array, itemToRemove){
     let index = array.indexOf(itemToRemove)
     array.splice(index, 1);
+}
+
+function toggleReadUnread(array, itemToToggle){
+    let index = array.indexOf(itemToToggle)
+    if(myLibrary[index].read === true){
+        myLibrary[index].read = false
+    } else {
+        myLibrary[index].read = true;
+    }
 }
 
 renderBooks();
