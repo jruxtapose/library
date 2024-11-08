@@ -26,8 +26,8 @@ function filterLibrary(library, searchTerm){
 searchBooksField.addEventListener('input', () => {
     if(searchBooksField.value !== ''){
         console.log(searchBooksField.value)
-        let librarySearch = filterLibrary(myLibrary, searchBooksField.value);
-        renderBooks(librarySearch);
+        librarySearchResults = filterLibrary(myLibrary, searchBooksField.value);
+        renderBooks(librarySearchResults);
     }else renderBooks(myLibrary);
 })
 
@@ -49,7 +49,7 @@ function addBookToLibrary(book){
 }
 
 function sortLibraryTitle(){
-    
+    searchBooksField.value = '';
     sortedLibrary = myLibrary.sort(function(a,b) {
         let textA = a.title.toUpperCase();
         let textB = b.title.toUpperCase();
@@ -63,7 +63,7 @@ function sortLibraryTitle(){
 }
 
 function sortLibraryAuthor(){
-    
+    searchBooksField.value = '';
     sortedLibrary = myLibrary.sort(function(a,b) {
         let textA = a.author.toUpperCase();
         let textB = b.author.toUpperCase();
@@ -77,7 +77,7 @@ function sortLibraryAuthor(){
 }
 
 function sortLibraryPages(){
-    
+    searchBooksField.value = '';
     sortedLibrary = myLibrary.sort((a,b) => a.pages - b.pages);
 
     myLibrary = sortedLibrary;
