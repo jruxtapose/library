@@ -9,9 +9,15 @@
 <body>
     <div class="header">
         <h1>User Library</h1>
+        <div class="sort-buttons">
+            <button class="sort-library-title">Sort Library by Title</button>
+            <button class="sort-library-author">Sort Library by Author</button>
+            <button class="sort-library-pages">Sort Library by Pages</button>
         </div>
+        <div class="search-books"><label for="search-books">Search:</label><input type="search" name="search-books" id="search-books"></div>
     </div>
     <div class="sidebar">
+        <h2>Add Book to Library</h2>
         <form action="#" method="get" class="add-book" >
             <label for="new-book-title">Title</label>
             <input type="text" name="new-book-title" id="new-book-title" required>
