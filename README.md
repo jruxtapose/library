@@ -20,6 +20,10 @@ This project is a simple library application built with JavaScript as part of Th
 1. Clone this repository: `git clone https://github.com/jruxtapose/library.git`
 2. Open `index.html` in your web browser.
 
+or
+
+Visit [https://jruxtapose.github.io/library/](https://jruxtapose.github.io/library/)
+
 ## Project Structure
 
 * `index.html`: Main HTML file for the library application.
