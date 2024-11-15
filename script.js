@@ -42,15 +42,19 @@ searchBooksField.addEventListener('input', () => {
 let myLibrary = [];
 let sortedLibrary = [];
 
-function Book(title, author, pages, read) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.read = read;
-}
 
-function addBookToLibrary(book){
-    myLibrary.push(book);
+
+class Book {
+    constructor(title, author, pages, read){
+        this. title = title,
+        this.author = author,
+        this.pages = pages,
+        this.read = read
+    }
+
+    addBookToLibrary(){
+        myLibrary.push(this);
+    }
 }
 
 const lordOfTheRings1 = new Book('Lord of the Rings: The Fellowship of the Ring', 'J.R.R. Tolkien', 432, true);
@@ -59,11 +63,11 @@ const lordOfTheRings2 = new Book('Lord of the Rings: The Two Towers', 'J.R.R. To
 const lordOfTheRings3 = new Book('Lord of the Rings: The Return of the King', 'J.R.R. Tolkien', 432, true);
 const redRising = new Book('Red Rising', 'Pierce Brown', 382, true);
 
-addBookToLibrary(theHobbit)
-addBookToLibrary(lordOfTheRings1)
-addBookToLibrary(lordOfTheRings2)
-addBookToLibrary(lordOfTheRings3)
-addBookToLibrary(redRising)
+theHobbit.addBookToLibrary();
+lordOfTheRings1.addBookToLibrary();
+lordOfTheRings2.addBookToLibrary();
+lordOfTheRings3.addBookToLibrary();
+redRising.addBookToLibrary();
 
 
 form.addEventListener('submit', (event) => {
