@@ -46,7 +46,7 @@ let sortedLibrary = [];
 
 class Book {
     constructor(title, author, pages, read){
-        this. title = title,
+        this.title = title,
         this.author = author,
         this.pages = pages,
         this.read = read
@@ -55,19 +55,38 @@ class Book {
     addBookToLibrary(){
         myLibrary.push(this);
     }
+
+    deleteBook(){
+        let index = myLibrary.indexOf(this);
+        if(index>-1){
+            myLibrary.splice(index, 1);
+        }
+    }
+
+    toggleReadUnread(){
+        let index = myLibrary.indexOf(this)
+        if (index > -1){
+            myLibrary[index].read = !myLibrary[index].read;
+        }
+    }
+
 }
 
-const lordOfTheRings1 = new Book('Lord of the Rings: The Fellowship of the Ring', 'J.R.R. Tolkien', 432, true);
-const theHobbit = new Book('The Hobbit', 'J.R.R. Tolkien', 366, false);
-const lordOfTheRings2 = new Book('Lord of the Rings: The Two Towers', 'J.R.R. Tolkien', 322, true);
-const lordOfTheRings3 = new Book('Lord of the Rings: The Return of the King', 'J.R.R. Tolkien', 432, true);
-const redRising = new Book('Red Rising', 'Pierce Brown', 382, true);
+const demoBooks = (() => {
+    const lordOfTheRings1 = new Book('Lord of the Rings: The Fellowship of the Ring', 'J.R.R. Tolkien', 432, true);
+    const theHobbit = new Book('The Hobbit', 'J.R.R. Tolkien', 366, false);
+    const lordOfTheRings2 = new Book('Lord of the Rings: The Two Towers', 'J.R.R. Tolkien', 322, true);
+    const lordOfTheRings3 = new Book('Lord of the Rings: The Return of the King', 'J.R.R. Tolkien', 432, true);
+    const redRising = new Book('Red Rising', 'Pierce Brown', 382, true);
 
-theHobbit.addBookToLibrary();
-lordOfTheRings1.addBookToLibrary();
-lordOfTheRings2.addBookToLibrary();
-lordOfTheRings3.addBookToLibrary();
-redRising.addBookToLibrary();
+    theHobbit.addBookToLibrary();
+    lordOfTheRings1.addBookToLibrary();
+    lordOfTheRings2.addBookToLibrary();
+    lordOfTheRings3.addBookToLibrary();
+    redRising.addBookToLibrary();
+})();
+
+
 
 
 form.addEventListener('submit', (event) => {
@@ -142,29 +161,15 @@ function Tile(book){
 
     deleteButton.addEventListener('click', () => {
         if(confirm(`Are you sure you want to remove ${book.title}?`)){
-            deleteBook(myLibrary, book);
+            book.deleteBook();
             tile.remove();
         }
     })
 
     toggleRead.addEventListener('click', () => {
-        toggleReadUnread(myLibrary, book);
+        book.toggleReadUnread();
         tile.classList.toggle('unread');
     })
-}
-
-function deleteBook(array, itemToRemove){
-    let index = array.indexOf(itemToRemove)
-    if (index > -1){
-        array.splice(index, 1);
-    }
-}
-
-function toggleReadUnread(array, itemToToggle){
-    let index = array.indexOf(itemToToggle)
-    if (index > -1){
-        array[index].read = !array[index].read;
-    }
 }
 
 renderBooks(myLibrary);
