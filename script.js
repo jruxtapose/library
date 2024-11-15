@@ -86,7 +86,7 @@ form.addEventListener('submit', (event) => {
     }
 
     newBook = new Book(newBookTitle, newBookAuthor, newBookPages, newBookRead)
-    addBookToLibrary(newBook);
+    newBook.addBookToLibrary();
     Tile(newBook)
 
     form.reset();
